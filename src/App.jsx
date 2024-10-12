@@ -1,4 +1,4 @@
-import { BrowserRouter,Routes,Route } from 'react-router-dom'
+import { BrowserRouter,Routes,Route, Outlet } from 'react-router-dom'
 import './App.css'
 
 function App() {
@@ -7,10 +7,12 @@ function App() {
     <>
     <BrowserRouter>
     <Routes>
+    <Route path='/' element={<Layout/>}>
       <Route path='/' element={<Landing/>}></Route>
       <Route path='/neet/11' element={<Class11Program/>}></Route>
       <Route path='/neet/12' element={<Class12Program/>}></Route>
       <Route path='*' element={<NotFound/>}></Route>
+      </Route>
     </Routes>
     </BrowserRouter>
       <h1>Vite + React</h1>
@@ -31,6 +33,35 @@ function Landing(){
     </>
   )
 }
+function Layout(){
+  return(
+    <>
+
+      <div style={{height:"100vh"}}>
+<Header/>
+        <div  style={{height:"90vh"}}>
+        <Outlet/>
+        </div>
+<Footer/>
+      </div>
+    </>
+  )
+}
+function Header(){
+  return(
+    <>
+    <h1>this is header</h1>
+    </>
+  )
+}
+function Footer(){
+  return(
+    <>
+    <h1>this is Footer</h1>
+    </>
+  )
+}
+
 function Class11Program(){
   return(
     <>
